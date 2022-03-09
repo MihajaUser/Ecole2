@@ -2,13 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/D:/test1/src/java/personne/Eleve.java</file>
-            <file>file:/D:/test1/web/WEB-INF/web.xml</file>
-            <file>file:/D:/test1/src/java/ecole.sql</file>
-            <file>file:/D:/test1/web/form.jsp</file>
-            <file>file:/D:/test1/src/java/controlleur/ControlCreateEleve.java</file>
-            <file>file:/D:/test1/web/resultat.jsp</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
