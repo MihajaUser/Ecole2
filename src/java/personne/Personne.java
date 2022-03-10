@@ -1,8 +1,6 @@
 package personne;
 
-import ecolage.PaimentEcolage;
 import fonction.Connexion;
-import fonction.Fonction;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -108,6 +106,42 @@ public class Personne {
             personne = new Personne[vec.size()];
             for(int i=0; i<vec.size(); i++) {
                 personne[i] = vec.get(i);
+            }
+        }
+        
+        catch(Exception e) {
+            throw e;
+        }
+        
+        finally {
+            res.close();
+            stmt.close();
+            con.close();
+        }
+        
+        return personne;
+    }
+    
+    public Personne getlast() throws Exception {
+        Personne personne = null;
+        Connection con = null;
+        Statement stmt = null;
+        ResultSet res = null;
+        
+        try {
+            con = new Connexion().connectpsql();
+            
+            String sql = "select * from personnes";
+            stmt = con.createStatement();
+            res = stmt.executeQuery(sql);
+            while(res.last()) {
+                personne = new Personne();
+                personne.setId(res.getInt(1));
+                personne.setNom(res.getString(2));
+                personne.setPrenom(res.getString(3));
+                personne.setDateNaissance(res.getDate(4));
+                personne.setSexe(res.getBoolean(5));
+                personne.setAdresse(res.getString(6));
             }
         }
         

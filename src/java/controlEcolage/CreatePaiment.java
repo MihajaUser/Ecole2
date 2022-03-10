@@ -1,6 +1,5 @@
-package controlleur;
+package controlEcolage;
 
-import ecolage.EcolageNiveau;
 import ecolage.PaimentEcolage;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,33 +11,32 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import personne.Eleve;
-import personne.Personne;
 
-public class ControlRecherche extends HttpServlet {
+public class CreatePaiment extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         res.setContentType("text/html;charset=UTF-8");
         PrintWriter out = res.getWriter();
         
-        String nom = req.getParameter("nom");
-        String sexeeleve = req.getParameter("sexe");
-        String adresse = req.getParameter("adresse");
-        String naissanceeleve = req.getParameter("naissance");
+        String id = req.getParameter("id");
+        String sommeecolage = req.getParameter("somme");
+        String duMoisecolage = req.getParameter("duMois");
+        String payeLeecolage = req.getParameter("payeLe");
         
-        Boolean sexe = Boolean.parseBoolean(sexeeleve);
-        Date naissance = java.sql.Date.valueOf(naissanceeleve);
+        int ideleve = Integer.parseInt(id);
+        float somme = Float.parseFloat(sommeecolage);
+        Date duMois = java.sql.Date.valueOf(duMoisecolage);            
+        Date payeLe = java.sql.Date.valueOf(payeLeecolage);
 
-        Eleve eleve = new Eleve();
+        PaimentEcolage paiment = new PaimentEcolage();
         try {
-            Eleve[] listeleve = eleve.recherche(nom, sexe, adresse, naissance);
-            req.setAttribute("list", listeleve);
+            paiment.createPaiment(ideleve,somme, duMois, payeLe);
         } 
         
         catch (Exception ex) {
-            Logger.getLogger(ControlRecherche.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CreatePaiment.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         RequestDispatcher dispat = req.getRequestDispatcher("/resultat.jsp");
         dispat.forward(req,res);
     }

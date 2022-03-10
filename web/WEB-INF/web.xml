@@ -1,67 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>Messagecontrol</servlet-name>
-        <servlet-class>controlleurs.Messagecontrol</servlet-class>
+        <servlet-name>CreatePaiment</servlet-name>
+        <servlet-class>controlEcolage.CreatePaiment</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Controlleur</servlet-name>
-        <servlet-class>controlleurs.Controlleur</servlet-class>
+        <servlet-name>ListEcolage</servlet-name>
+        <servlet-class>controlEcolage.ListEcolage</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>Delete</servlet-name>
+        <servlet-class>controlNote.Delete</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ControlleurEcolage</servlet-name>
-        <servlet-class>controlleurs.ControlleurEcolage</servlet-class>
+        <servlet-name>Enregistrement</servlet-name>
+        <servlet-class>controlNote.Enregistrement</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Controlpersonne</servlet-name>
-        <servlet-class>controlleur.Controlpersonne</servlet-class>
+        <servlet-name>GetBulletin</servlet-name>
+        <servlet-class>controlNote.GetBulletin</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ControlRecherche</servlet-name>
-        <servlet-class>controlleur.ControlRecherche</servlet-class>
+        <servlet-name>Update</servlet-name>
+        <servlet-class>controlNote.Update</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ControlleurNote</servlet-name>
-        <servlet-class>control.ControlleurNote</servlet-class>
+        <servlet-name>Valider</servlet-name>
+        <servlet-class>controlNote.Valider</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>CreateEleve</servlet-name>
+        <servlet-class>controlPersonne.CreateEleve</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ControlleurSave</servlet-name>
-        <servlet-class>control.ControlleurSave</servlet-class>
+        <servlet-name>ListPersonne</servlet-name>
+        <servlet-class>controlPersonne.ListPersonne</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ControlCreateEleve</servlet-name>
-        <servlet-class>controlleur.ControlCreateEleve</servlet-class>
+        <servlet-name>RechercheEleve</servlet-name>
+        <servlet-class>controlPersonne.RechercheEleve</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateEleve</servlet-name>
+        <servlet-class>controlPersonne.UpdateEleve</servlet-class>
+    </servlet>
+
+
     <servlet-mapping>
-        <servlet-name>Messagecontrol</servlet-name>
-        <url-pattern>/messageclient</url-pattern>
+        <servlet-name>CreatePaiment</servlet-name>
+        <url-pattern>/CreatePaiment</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Controlleur</servlet-name>
-        <url-pattern>/Controlleur</url-pattern>
+        <servlet-name>ListEcolage</servlet-name>
+        <url-pattern>/ListEcolage</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>Delete</servlet-name>
+        <url-pattern>/Delete</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ControlleurEcolage</servlet-name>
-        <url-pattern>/ControlleurEcolage</url-pattern>
+        <servlet-name>Enregistrement</servlet-name>
+        <url-pattern>/Enregistrement</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Controlpersonne</servlet-name>
-        <url-pattern>/Controlpersonne</url-pattern>
+        <servlet-name>GetBulletin</servlet-name>
+        <url-pattern>/GetBulletin</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ControlRecherche</servlet-name>
-        <url-pattern>/ControlRecherche</url-pattern>
+        <servlet-name>Update</servlet-name>
+        <url-pattern>/Update</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ControlleurNote</servlet-name>
-        <url-pattern>/ControlleurNote</url-pattern>
+        <servlet-name>Valider</servlet-name>
+        <url-pattern>/Valider</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>CreateEleve</servlet-name>
+        <url-pattern>/CreateEleve</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ControlleurSave</servlet-name>
-        <url-pattern>/ControlleurSave</url-pattern>
+        <servlet-name>ListPersonne</servlet-name>
+        <url-pattern>/ListPersonne</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ControlCreateEleve</servlet-name>
-        <url-pattern>/ControlCreateEleve</url-pattern>
+        <servlet-name>RechercheEleve</servlet-name>
+        <url-pattern>/RechercheEleve</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateEleve</servlet-name>
+        <url-pattern>/UpdateEleve</url-pattern>
     </servlet-mapping>
 </web-app>

@@ -1,7 +1,5 @@
-package controlleurs;
+package controlNote;
 
-import ecolage.EcolageNiveau;
-import ecolage.PaimentEcolage;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
@@ -12,30 +10,32 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import personne.Personne;
+import note.Note;
 
-public class ControlleurEcolage extends HttpServlet {
+public class Update extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         res.setContentType("text/html;charset=UTF-8");
         PrintWriter out = res.getWriter();
+        
+        String ideleve = req.getParameter("ideleve");
+        String noteeleve = req.getParameter("note");
+        String datenoteexamen = req.getParameter("examen");
+        
+        Date examen = Date.valueOf(datenoteexamen);
+        int id = Integer.parseInt(ideleve);
+        float pointnote = Float.parseFloat(noteeleve);
 
-        EcolageNiveau ecolage = new EcolageNiveau();
-        PaimentEcolage paiment = new PaimentEcolage();
+        Note note = new Note();
         try {
-            EcolageNiveau[] niveau = ecolage.getList();
-            PaimentEcolage[] pai = paiment.getPaimentEcolage();
-            req.setAttribute("list", niveau);
-            req.setAttribute("list", pai);
+            note.update(id, pointnote, examen);
         } 
         
         catch (Exception ex) {
-            Logger.getLogger(Messagecontrol.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Update.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         RequestDispatcher dispat = req.getRequestDispatcher("/resultat.jsp");
-        dispat.forward(req,res);
-        RequestDispatcher dispatpai = req.getRequestDispatcher("/resultatpai.jsp");
         dispat.forward(req,res);
     }
 }

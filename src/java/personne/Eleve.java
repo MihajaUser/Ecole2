@@ -74,18 +74,16 @@ public class Eleve {
         this.cree_le = cree_le;
     }
     
-    public int create(int idpersonne,Date cree_le, int idclasse) throws Exception {
+    public void create(int idpersonne, int idclasse,Date cree_le) throws Exception {
         int insert = 0;
         String sql ;
         Connection con = null;
         Statement stmt = null;
-        ResultSet res = null;
-        System.out.println("");
+        
         try {
             con = new Connexion().connectpsql();
             
             sql = "insert into eleves (IdPersonne,IdClasses,statut,cree_le) values (" + idpersonne + "," + idclasse + ",'Eleve','" + cree_le + "')";
-            System.out.println(sql);
             stmt = con.createStatement();
             insert = stmt.executeUpdate(sql);
         }
@@ -98,8 +96,6 @@ public class Eleve {
             stmt.close();
             con.close();
         }
-        
-        return idpersonne;
     }
     
     public Eleve[] read() throws Exception {

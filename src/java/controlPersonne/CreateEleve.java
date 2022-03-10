@@ -1,7 +1,5 @@
-package controlleur;
+package controlPersonne;
 
-import ecolage.EcolageNiveau;
-import ecolage.PaimentEcolage;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
@@ -15,13 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import personne.Eleve;
 import personne.Personne;
 
-public class ControlCreateEleve extends HttpServlet {
+public class CreateEleve extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         res.setContentType("text/html;charset=UTF-8");
         PrintWriter out = res.getWriter();
-        /*out.println("hello");
-        System.out.println("Miantso servlet");
         
         String nom = req.getParameter("nom");
         String prenom = req.getParameter("prenom");
@@ -36,23 +32,20 @@ public class ControlCreateEleve extends HttpServlet {
         Date cree = Date.valueOf(creele);
         int idclasse = Integer.parseInt(idclasseeleve);
         
+        Personne personne = new Personne();
         Eleve eleve = new Eleve();
-        int requete = 10;
-        out.println(requete);
-        
+   
         try {
-            out.println("voici1");
-            requete = eleve.create(nom, prenom, naissance, sexe, adresse, cree, idclasse);
-                        out.println("voici");
-            req.setAttribute("list", requete);
+            personne.create(nom, prenom, naissance, sexe, adresse);
+            personne = personne.getlast();
+            int id = personne.getId();
+            eleve.create(id, idclasse, cree);
         } 
         
         catch (Exception ex) {
-                        out.println("voici2");
-            Logger.getLogger(ControlRecherche.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CreateEleve.class.getName()).log(Level.SEVERE, null, ex);
         }
-            out.println("voici3");
-        /*RequestDispatcher dispat = req.getRequestDispatcher("/resultat.jsp");
+       /* RequestDispatcher dispat = req.getRequestDispatcher("/resultat.jsp");
         dispat.forward(req,res);*/
     }
 }

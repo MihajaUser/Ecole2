@@ -89,14 +89,16 @@ public class Note {
             stmt = con.createStatement();
             res = stmt.executeQuery(sql);
             while(res.next()) {
-                this.setEleveNom(res.getString(2));
-                this.setEleveClasse(res.getString(3));
-                this.setIdMatiere(res.getInt(4));
-                this.setMatiereNom(res.getString(5));                
-                this.setMatiereCoefficient(res.getInt(6));                
-                this.setNotePoint(res.getFloat(7));                
-                this.setNoteDateExamen(res.getDate(8));
-                vec.add(this);
+                Note notes = new Note();
+                notes.setIdEleve(res.getInt(1));
+                notes.setEleveNom(res.getString(2));
+                notes.setEleveClasse(res.getString(3));
+                notes.setIdMatiere(res.getInt(4));
+                notes.setMatiereNom(res.getString(5));                
+                notes.setMatiereCoefficient(res.getInt(6));                
+                notes.setNotePoint(res.getFloat(7));                
+                notes.setNoteDateExamen(res.getDate(8));
+                vec.add(notes);
             }
 
             note = new Note[vec.size()];
@@ -140,7 +142,7 @@ public class Note {
         }
     }
     
-    public void delete(int ideleve) throws Exception {
+    public void delete(float note) throws Exception {
         int delete = 0;
         Connection con = null;
         Statement stmt = null;
@@ -148,7 +150,7 @@ public class Note {
         try {
             con = new Connexion().connectpsql();
             
-            String sql = "delete from note where ideleve = " + ideleve;
+            String sql = "delete from note where poimt = " + note;
             stmt = con.createStatement();
             delete = stmt.executeUpdate(sql);
         }
@@ -209,7 +211,7 @@ public class Note {
         }
     }
     
-    public Note[] getBulletin(int idEleve) throws Exception {
+    public Note[] getBulletin(int ideleve) throws Exception {
         Note[] note = null;
         Vector<Note> vec = new Vector();
         Connection con = null;
@@ -219,18 +221,20 @@ public class Note {
         try {
             con = new Connexion().connectpsql();
             
-            String sql = "select * from Notes where idEleve = " + idEleve;
+            String sql = "select * from notes where idEleve = " + idEleve;
             stmt = con.createStatement();
             res = stmt.executeQuery(sql);
             while(res.next()) {
-                this.setEleveNom(res.getString(2));
-                this.setEleveClasse(res.getString(3));
-                this.setIdMatiere(res.getInt(4));
-                this.setMatiereNom(res.getString(5));                
-                this.setMatiereCoefficient(res.getInt(6));                
-                this.setNotePoint(res.getFloat(7));                
-                this.setNoteDateExamen(res.getDate(8));
-                vec.add(this);
+                Note notes = new Note();
+                notes.setIdEleve(res.getInt(1));
+                notes.setEleveNom(res.getString(2));
+                notes.setEleveClasse(res.getString(3));
+                notes.setIdMatiere(res.getInt(4));
+                notes.setMatiereNom(res.getString(5));                
+                notes.setMatiereCoefficient(res.getInt(6));                
+                notes.setNotePoint(res.getFloat(7));                
+                notes.setNoteDateExamen(res.getDate(8));
+                vec.add(notes);
             }
             
             note = new Note[vec.size()];
