@@ -23,7 +23,7 @@ public class Enregistrement extends HttpServlet {
         String matiere = req.getParameter("idmatiere");
         String notepoint = req.getParameter("point");
         String dateexamen = req.getParameter("dateexamen");
-        
+        out.println(dateexamen);
         int ideleve = Integer.parseInt(eleve);
         int idmatiere = Integer.parseInt(matiere);
         float pointnote = Float.parseFloat(notepoint);
@@ -46,7 +46,7 @@ public class Enregistrement extends HttpServlet {
             Logger.getLogger(Enregistrement.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        RequestDispatcher dispat = req.getRequestDispatcher("/resultat.jsp");
+        RequestDispatcher dispat = req.getRequestDispatcher("/prof.jsp");
         dispat.forward(req,res);
     }
 }
